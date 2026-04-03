@@ -1,0 +1,7 @@
+sudo apt install openssh-server
+sudo systemctl start ssh
+sudo systemctl enable ssh
+ssh fakeuser@localhost
+sudo grep "Failed password" /var/log/auth.log
+sudo apt install fail2ban
+sudo systemctl status fail2ban

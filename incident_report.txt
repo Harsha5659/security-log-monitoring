@@ -1,0 +1,31 @@
+Incident Title: Suspicious SSH Login Attempts (Brute Force Simulation)
+
+Date: 03 April 2026
+
+Summary:
+Multiple failed SSH login attempts were detected on the system targeting an invalid user account. This behavior is indicative of a potential brute-force attack attempt.
+
+Details:
+- Total Failed Attempts: 3
+- Username Targeted: fakeuser (invalid user)
+- Source IP Address: 127.0.0.1
+- Port Used: 36514
+- Protocol: SSH (sshd)
+- Log Source: /var/log/auth.log
+
+Evidence:
+2026-04-03T16:01:37 Failed password for invalid user fakeuser from 127.0.0.1 port 36514 ssh2
+2026-04-03T16:01:43 Failed password for invalid user fakeuser from 127.0.0.1 port 36514 ssh2
+2026-04-03T16:01:54 Failed password for invalid user fakeuser from 127.0.0.1 port 36514 ssh2
+
+Analysis:
+The repeated failed login attempts from a single IP address indicate a possible brute-force attempt. The attacker is trying to gain unauthorized access by guessing credentials.
+
+Risk Level:
+Medium
+
+Recommendations:
+- Implement fail2ban to block repeated failed login attempts
+- Disable SSH password authentication and use SSH key-based authentication
+- Restrict SSH access using firewall rules
+- Monitor logs regularly for suspicious activity
